@@ -83,3 +83,9 @@ This project is licensed under the MIT License.
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a pull request or open an issue for any improvements or bug fixes.
+
+---
+
+### Explore More!
+
+If you're interested in expanding your options, we also have the **OpenWrt Passwall Installer**. Learn more about it at the [OpenWrt Passwall Installer GitHub Repository](https://github.com/kyawswarthwin/openwrt-passwall-installer).
