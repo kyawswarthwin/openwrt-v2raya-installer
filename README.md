@@ -10,7 +10,7 @@ This repository provides a shell script, `v2raya.sh`, to easily install **v2rayA
 - Installs required kernel modules for firewall functionality, supporting both **fw3** and **fw4**.
 - Installs the **v2rayA** application and its dependencies.
 - Optionally installs geoip and geosite databases for enhanced functionality (commented out by default).
-- Installs the LuCI app for easier management through the web UI, if LuCI is already installed.
+- Installs the LuCI app for easier management through the web UI if LuCI is already installed.
 
 ## Prerequisites
 
@@ -58,13 +58,23 @@ uci get network.lan.ipaddr
 
 ## Optional Features
 
-To install the geoip and geosite databases, uncomment the respective lines in the script before running it:
+To install the geoip and geosite databases for enhanced functionality, you can uncomment the respective lines in the script before running it:
 
 ```sh
 # echo "Installing geoip and geosite databases..."
-# install_pkg v2fly-geoip
-# install_pkg v2fly-geosite
+# if opkg install v2fly-geoip && opkg install v2fly-geosite; then
+#     echo "Geoip and geosite databases installed successfully."
+# else
+#     echo "Error: Failed to install geoip and geosite databases."
+# fi
 ```
+
+These databases provide geo-location capabilities for your connections, improving the overall functionality of v2rayA.
+
+### Note:
+
+- Ensure that your router has sufficient storage space before enabling this feature.
+- Uncommenting these lines will allow the script to automatically install the necessary databases during the installation process.
 
 ## Troubleshooting
 
