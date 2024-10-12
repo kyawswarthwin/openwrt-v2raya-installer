@@ -9,11 +9,16 @@ else
 fi
 
 echo "Importing v2rayA feed..."
-if echo "src/gz v2raya https://downloads.sourceforge.net/project/v2raya/openwrt/$(. /etc/openwrt_release && echo "$DISTRIB_ARCH")" | tee -a "/etc/opkg/customfeeds.conf"; then
-    echo "v2rayA feed imported successfully."
+if ! grep -q "^src/gz v2raya" /etc/opkg/customfeeds.conf; then
+    echo "Adding v2rayA feed to customfeeds.conf..."
+    if echo "src/gz v2raya https://downloads.sourceforge.net/project/v2raya/openwrt/$(. /etc/openwrt_release && echo "$DISTRIB_ARCH")" | tee -a "/etc/opkg/customfeeds.conf"; then
+        echo "v2rayA feed imported successfully."
+    else
+        echo "Error: Unable to import v2rayA feed."
+        exit 1
+    fi
 else
-    echo "Error: Unable to import v2rayA feed."
-    exit 1
+    echo "Feed for v2rayA already exists in customfeeds.conf, skipping."
 fi
 
 echo "Updating opkg feeds..."
